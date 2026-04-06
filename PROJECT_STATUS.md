@@ -4,14 +4,14 @@
 環境破壊リアルタイムダッシュボード。日本の環境データ＆世界の環境破壊を可視化するWebサイト。
 
 ## 現在のバージョン / 状態
-開発中 — Phase 1（設計・準備）
+開発中 — Phase 2（主要ダッシュボード実装完了）
 
 ## 協業ステータス
 - lead: Claude Code (surface:5)
 - executor: Codex (surface:4)
-- phase: planning → implementation
+- phase: implementation completed (PR ready)
 - handoff_ready: false
-- next_owner: Codex
+- next_owner: Claude Code
 - final_owner: Claude Code
 - updated_at: 2026-04-06
 
@@ -57,7 +57,8 @@ src/
 │   ├── AqiCityCard.tsx     # 都市別AQIカード
 │   ├── Co2Chart.tsx        # CO2推移チャート
 │   ├── TempTrendChart.tsx  # 気温推移チャート
-│   └── AqiRanking.tsx      # AQIランキング
+│   ├── AqiRanking.tsx      # AQIランキング
+│   └── aqi-utils.ts        # AQI表示ヘルパー
 └── lib/
     ├── aqicn.ts            # AQICN API
     ├── open-meteo.ts       # Open-Meteo API
@@ -69,15 +70,17 @@ src/
 | 日付 | 変更内容 | 担当 |
 |------|---------|------|
 | 2026-04-06 | 初期セットアップ・設計 | Claude Code |
+| 2026-04-06 | Issue #1-#3 実装: API層、6コンポーネント、3ページ、レイアウト/スタイル更新、lint/build確認 | Codex |
 
 ## 次にやること
-- [ ] lib/ API関数作成（4ファイル）
-- [ ] components/ チャート・カードコンポーネント作成
-- [ ] 3ページ実装（トップ・日本・世界）
-- [ ] Vercelデプロイ
+- [x] lib/ API関数作成（4ファイル）
+- [x] components/ チャート・カードコンポーネント作成
+- [x] 3ページ実装（トップ・日本・世界）
+- [ ] AQICN demoトークンを本番用トークンへ差し替え
+- [ ] Vercelデプロイ確認
 
 ## 現在の問題
-なし
+- AQICN `token=demo` は都市ごとの差分が不安定で、実運用では専用トークンへの差し替えが必要
 
 ## デプロイ / リリース方法
 Vercelにデプロイ。`vercel --prod` or GitHub連携
